@@ -35,7 +35,8 @@ class Photo_model extends Model
         $data->select('(SELECT COUNT(cmt_id) FROM tr_comment WHERE cmt_pht_id = a.pht_id) AS "comment"'); 
         $data->join('ms_user as b', 'a.pht_usr_id = b.usr_id');
         $data->join('tr_like as c', 'a.pht_id = c.lke_pht_id and c.lke_usr_id = '.$id, 'left');
-        $data->join('tr_like as d', 'a.pht_id = d.lke_pht_id', 'left');  
+        $data->join('tr_like as d', 'a.pht_id = d.lke_pht_id', 'left'); 
+        $data->where('a.pht_private', "0"); 
         $data->orderBy('rand()');
         $data->groupBy('a.pht_id');
         $result = $data->get()->getResultArray();

@@ -27,9 +27,23 @@
                     <div class="containerImage">
                       <img style="height: 150px; object-fit: cover; " src="<?=base_url('public/image')?>/<?=$key['pht_image']?>" alt="Image" class="">
                       <div class="overlay">
-                        <div class="textImage">
-                          <p style="width: 100%;">Like : <?=$key['like']?></p>
-                          <p style="width: 100%;">Comment : <?=$key['comment']?></p>
+                        <div class="textImage" style="width: 100%;">
+                          <?php
+                            if ($key['pht_lke_status'] == 1) { ?>
+                              <p style="width: 100%;">Like : <?=$key['like']?></p>
+                            <?php }
+
+                            if ($key['pht_cmn_status'] == 1) { ?>
+                              <p style="width: 100%;">Comment : <?=$key['comment']?></p>
+                            <?php }
+
+                            if ($key['pht_private'] == 1) { ?>
+                              <p style="width: 100%;">Status : Private</p>
+                            <?php }else{ ?>
+                              <p style="width: 100%;">Status : Public</p>
+                            <?php }
+                          ?>
+                          
                         </div>
                       </div>
                     </div>
