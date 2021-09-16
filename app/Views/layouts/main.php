@@ -1,7 +1,7 @@
 <div class="tm-main-content">
 
     <div class="tm-name">
-      <p style="margin-top: 5px; margin-bottom: 5px;"><?=$usr_nama?></p>
+      <p style="margin-top: 5px; margin-bottom: 5px;"><strong><?=$usr_nama?></strong></p>
     </div>
 
     <div id="tm-intro-img">
@@ -9,7 +9,9 @@
     </div>
 
     <div class="like-comment">
-      <i style="margin-right: 10px;" class="far fa-heart fa-2x "></i>
+      <i id="like<?=$pht_id?>" like_id="<?=$lke_id?>" style="margin-right: 10px;" class="<?=(is_null($lke_id))?'far':'fas'?> fa-heart fa-2x like"> 
+        <p style="float: right;"><span id="tlike<?=$pht_id?>"><?=$like?></span> likes</p>
+      </i>
       <i class="far fa-comment fa-2x "></i>
     </div>
    

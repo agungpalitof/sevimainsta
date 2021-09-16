@@ -5,7 +5,7 @@
     <div class="fixed-header">
         <div style="color: #3a4a58;" class="container">
           <a href="<?=base_url('home')?>"><i style="display: inline-block; vertical-align: baseline;" class="fas fa-camera-retro fa-2x"></i></a>
-          <h1 style="display: inline-block; vertical-align: baseline; margin: 0px; margin-left: 5px;">Visema Insta</h1> 
+          <h1 style="display: inline-block; vertical-align: baseline; margin: 0px; margin-left: 5px;">Sevima Insta</h1> 
           <div style="float: right; display: flex; justify-content: flex-end"> 
             <a href="<?=base_url('User/signout')?>"><i style="display: inline-block; vertical-align: baseline; margin-top: 5px;" class="fas fa-sign-out-alt fa-2x"></i></a>
           </div>
@@ -28,7 +28,7 @@
                       <img style="height: 150px; object-fit: cover; " src="<?=base_url('public/image')?>/<?=$key['pht_image']?>" alt="Image" class="">
                       <div class="overlay">
                         <div class="textImage">
-                          <p style="width: 100%;">Like : 6</p>
+                          <p style="width: 100%;">Like : <?=$key['like']?></p>
                           <p style="width: 100%;">Comment : 5</p>
                         </div>
                       </div>

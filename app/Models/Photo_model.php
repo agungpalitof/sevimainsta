@@ -17,20 +17,26 @@ class Photo_model extends Model
                                 'pht_status'];
     
 	public function getPhoto($id)
-    { 
-        return $this->where('pht_usr_id', $id)
-                    ->get()
-                    ->getResultArray(); 
+    {   
+        $data = $this->db->table('ms_photo as a');
+        $data->select('a.*, count(b.lke_id) as "like"'); 
+        $data->join('tr_like as b', 'a.pht_id = b.lke_pht_id', 'left');  
+        $data->where('a.pht_usr_id', $id);
+        $data->groupBy('a.pht_id');
+        $result = $data->get()->getResultArray();
+        return $result; 
     }
 
     public function getAllPhoto($id)
     { 
         $data = $this->db->table('ms_photo as a');
-        $data->select('a.*, b.usr_nama'); 
+        $data->select('a.*, b.usr_nama, c.lke_id, count(d.lke_id) as "like"'); 
         $data->join('ms_user as b', 'a.pht_usr_id = b.usr_id');
-        // $data->join('ms_like as c', 'a.pht_lke_id = b.usr_id');
+        $data->join('tr_like as c', 'a.pht_id = c.lke_pht_id and c.lke_usr_id = '.$id, 'left');
+        $data->join('tr_like as d', 'a.pht_id = d.lke_pht_id', 'left');  
         // $data->join('ms_comment as d', 'a.pht_usr_id = b.usr_id');
         $data->orderBy('rand()');
+        $data->groupBy('a.pht_id');
         $result = $data->get()->getResultArray();
         return $result; 
     }
