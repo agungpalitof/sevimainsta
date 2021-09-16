@@ -22,4 +22,16 @@ class Photo_model extends Model
                     ->get()
                     ->getResultArray(); 
     }
+
+    public function getAllPhoto($id)
+    { 
+        $data = $this->db->table('ms_photo as a');
+        $data->select('a.*, b.usr_nama'); 
+        $data->join('ms_user as b', 'a.pht_usr_id = b.usr_id');
+        // $data->join('ms_like as c', 'a.pht_lke_id = b.usr_id');
+        // $data->join('ms_comment as d', 'a.pht_usr_id = b.usr_id');
+        $data->orderBy('rand()');
+        $result = $data->get()->getResultArray();
+        return $result; 
+    }
 }
