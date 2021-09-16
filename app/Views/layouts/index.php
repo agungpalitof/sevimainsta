@@ -81,5 +81,28 @@ $(document).ready(function(){
         })
       }
     })
+
+    $(".post").click(function(){
+      var id = this.id.substr(4)
+      var text = $('#cmtpost'+id).val()
+      if (text != "") {
+        var total_comment = parseInt($('#tcomment'+id).text())
+        $.ajax({
+            type:'POST',
+            url:'<?=base_url("Home/addComment"); ?>',
+            data:{'cmt_pht_id':id, 'cmt_text':text},
+            dataType : 'json' , 
+            success:function(data){   
+                if (data != null) { 
+                  $('#tcomment'+id).text(++total_comment) 
+                  $('#cmtpost'+id).val('')
+                  var newComment = "<strong>"+data+"&nbsp;&nbsp; </strong> "+text+"<br>"
+                  $("#cmtBox"+id).append(newComment)
+                  $("#cmtBox"+id).show();
+                }
+            }
+        })
+      }
+    })
 })
 </script>

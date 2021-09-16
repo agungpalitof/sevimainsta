@@ -29,7 +29,7 @@
                       <div class="overlay">
                         <div class="textImage">
                           <p style="width: 100%;">Like : <?=$key['like']?></p>
-                          <p style="width: 100%;">Comment : 5</p>
+                          <p style="width: 100%;">Comment : <?=$key['comment']?></p>
                         </div>
                       </div>
                     </div>
